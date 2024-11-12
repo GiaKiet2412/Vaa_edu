@@ -114,30 +114,30 @@ app.get('/api/students', async (req, res) => {
     }
 });
 
-// PUT - Mở hoặc khóa tài khoản sinh viên
-app.put('/api/students/:id/toggle-status', async (req, res) => {
+// PUT - Cập nhật trạng thái tài khoản sinh viên
+app.put('/api/students/:id/update-status', async (req, res) => {
     try {
         const connection = await getConnection();
         const { id } = req.params;
+        const { status } = req.body;
 
-        // Tìm sinh viên theo ID
-        const [students] = await connection.query('SELECT * FROM SinhVien WHERE id = ?', [id]);
-        if (students.length === 0) {
-            return res.status(404).send('Student not found');
+        // Kiểm tra trạng thái
+        const validStatuses = ['đang học', 'bảo lưu', 'thôi học', 'đã ra trường'];
+        if (!validStatuses.includes(status)) {
+            return res.status(400).send('Trạng thái không hợp lệ');
         }
 
-        // Chuyển đổi trạng thái
-        const newStatus = students[0].tinhtrang === 'Hoạt động' ? 'Tạm khóa' : 'Hoạt động';
-        const [result] = await connection.query('UPDATE SinhVien SET tinhtrang = ? WHERE id = ?', [newStatus, id]);
+        // Cập nhật trạng thái sinh viên
+        const [result] = await connection.query('UPDATE sinhvien SET TrangThai = ? WHERE MaSV = ?', [status, id]);
 
         if (result.affectedRows === 0) {
-            return res.status(404).send('Error updating student status');
+            return res.status(404).send('Không tìm thấy sinh viên');
         }
 
-        res.json({ id, status: newStatus });
+        res.json({ MaSV: id, TrangThai: status });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error toggling student status');
+        res.status(500).send('Lỗi khi cập nhật trạng thái sinh viên');
     }
 });
 
