@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.flex.items-center.justify-between > * {
+  margin-right: 1rem;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.border {
+  border: 1px solid #ccc;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
+.ml-5 {
+  margin-left: 1.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.wrapper {
+  background: linear-gradient(to bottom, #4297DE, #88D5F4);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.course-list-wrapper {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+.course-button {
+  background-color: white;
+  color: #4297DE;
+  border: 1px solid #4297DE;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.course-button:hover {
+  background-color: #88D5F4;
+  color: white;
+}
+
+.menu {
+  background: linear-gradient(to bottom, #4297DE, #88D5F4);
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-button {
+  color: #4297DE;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.text-custom-color {
+  color: #4297DE;
+}
+
+.border {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  /* Bo tròn góc */
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+  /* Khoảng cách dưới giữa các ô */
+}
+
+.rounded {
+  border-radius: 8px;
+  /* Đảm bảo các ô có bo tròn */
+}
+
+/* Cải thiện khoảng cách và kiểu cho các ô nhập */
+input {
+  display: block; /* Đặt ô nhập thành khối để dễ quản lý khoảng cách */
+  width: 100%; /* Chiếm toàn bộ chiều rộng của khung chứa */
+  padding: 0.5rem; /* Padding cho ô nhập */
+  margin-bottom: 1rem; /* Khoảng cách giữa các ô nhập */
+  border: 1px solid #ccc; /* Viền cho ô nhập */
+  border-radius: 4px; /* Bo tròn góc */
+}
+
+/* Thông báo lỗi */
+.error {
+  color: red; /* Màu đỏ cho thông báo lỗi */
+  font-size: 0.875rem; /* Kích thước chữ nhỏ hơn */
+  margin-top: -0.5rem; /* Đưa thông báo lỗi gần hơn với ô nhập */
+  margin-bottom: 1rem; /* Khoảng cách giữa thông báo lỗi và ô nhập tiếp theo */
+}
+
+.grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.gap-4 {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.gap-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .grid.grid-cols-1.sm\:grid-cols-2.md\:grid-cols-3.gap-4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.border.border-gray-300.p-4.rounded-lg {
+  border: 1px solid #d1d5db;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text-lg.font-semibold.mb-2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.space-y-2 > * {
+  margin-bottom: 0.5rem;
+}
+.space-y-2 {
+  margin-bottom: 1rem; /* Thêm khoảng cách giữa nội dung và nút */
+}
+
+.flex.justify-center.items-end.mt-4.space-x-2 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: auto;
+  gap: 0.5rem;
+}

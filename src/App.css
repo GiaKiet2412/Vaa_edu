@@ -1,0 +1,197 @@
+/* CSS chung cho menu và sidebar */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 10px;
+  width: 100%;
+}
+
+.header button {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.header nav {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  margin-left: 20px;
+}
+
+.header nav a {
+  margin-right: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.header span {
+  margin-left: 50px;
+  padding-right: 15px;
+  margin-right: 0;
+}
+
+.welcome-message {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: auto;
+  padding-right: 15px;
+  flex-grow: 1;
+  display: block;
+}
+
+body {
+  font-family: 'Tahoma', sans-serif;
+  font-weight: bold;
+  padding-top: 60px;
+}
+
+/* Menu ngang */
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  margin-right: 300px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline; /* Tùy chọn để thêm hiệu ứng hover */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4297DE, #88D5F4);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%); /* Ban đầu ẩn sidebar */
+  z-index: 1000;
+}
+
+.sidebar.open {
+  transform: translateX(0); /* Hiện sidebar */
+}
+
+/* Full width */
+.menu {
+  width: calc(100% - 250px); /* Điều chỉnh chiều rộng cho phù hợp */
+}
+
+.navbar a {
+  color: white;
+  padding: 0 15px;
+  text-decoration: none;
+}
+
+.navbar span {
+  margin-left: auto;
+  padding-right: 15px;
+}
+
+.hamburger {
+  font-size: 30px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 20px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to bottom, #4297DE, #88D5F4);
+  transition: 0.3s;
+  color: white;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-content {
+  padding: 20px;
+}
+
+.sidebar a {
+  color: white;
+  display: block;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+/* CSS cho bảng trong trang quản lý học phần */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Giữ cột có kích thước cố định */
+  margin-top: 50px; /* Đảm bảo bảng không bị đè lên phần menu */
+}
+
+.table-container {
+  padding-left: 20px; /* Đảm bảo bảng có khoảng cách khi sidebar mở */
+  padding-top: 20px; 
+}
+
+.table-container h2 {
+  color: #4297DE;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.table-container th {
+  background-color: #4297DE;
+  color: white;
+}
+
+.table-container td button {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.table-container td button.bg-red-500 {
+  background-color: red;
+}
+
+.table-container td button.bg-green-500 {
+  background-color: green;
+}
+
+th, td {
+  padding: 15px; /* Thêm khoảng cách cho các ô */
+  text-align: left;
+}
+
+th {
+  background: linear-gradient(to bottom, #4297DE, #88D5F4);
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
