@@ -24,18 +24,22 @@ const StudentManagement = () => {
     fetchStudents();
   }, []);
 
-  const toggleStatus = async (studentId) => {
+  const updateStatus = async (studentId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/students/${studentId}/toggle-status`, {
+      const response = await fetch(`http://localhost:5000/api/students/${studentId}/update-status`, {
         method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ status: newStatus }),
       });
 
       if (response.ok) {
         const updatedStudent = await response.json();
         setStudents(prevStudents =>
           prevStudents.map(student =>
-            student._id === updatedStudent.id
-              ? { ...student, TrangThai: updatedStudent.status }
+            student.MaSV === updatedStudent.MaSV
+              ? { ...student, TrangThai: updatedStudent.TrangThai }
               : student
           )
         );
@@ -63,21 +67,23 @@ const StudentManagement = () => {
         </thead>
         <tbody>
           {students.map(student => (
-            <tr key={student._id} className="border-t">
+            <tr key={student.MaSV} className="border-t">
               <td className="py-2 px-4">{student.MaSV}</td>
               <td className="py-2 px-4">{student.HoTen}</td>
               <td className="py-2 px-4">{student.Email}</td>
               <td className="py-2 px-4">{student.DiaChi}</td>
               <td className="py-2 px-4">{student.TrangThai}</td>
               <td className="py-2 px-4">
-                <button
-                  onClick={() => toggleStatus(student._id)}
-                  className={`px-4 py-1 rounded ${
-                    student.TrangThai === 'Hoạt động' ? 'bg-red-500' : 'bg-green-500'
-                  } text-white`}
+                <select
+                  value={student.TrangThai}
+                  onChange={(e) => updateStatus(student.MaSV, e.target.value)}
+                  className="px-4 py-1 border rounded"
                 >
-                  {student.TrangThai === 'Hoạt động' ? 'Khóa' : 'Mở'} tài khoản
-                </button>
+                  <option value="đang học">Đang học</option>
+                  <option value="bảo lưu">Bảo lưu</option>
+                  <option value="thôi học">Thôi học</option>
+                  <option value="đã ra trường">Đã ra trường</option>
+                </select>
               </td>
             </tr>
           ))}
